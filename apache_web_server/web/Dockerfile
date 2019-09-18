@@ -1,15 +1,4 @@
-FROM ubuntu
+FROM httpd:latest
 
-RUN apt-get update
+COPY ./index.html/ /usr/local/apache2/htdocs/
 
-RUN apt-get install -y apache2
-
-RUN apt-get install -y apache2-utils
-
-EXPOSE 80
-
-COPY ./index.html /var/www/html/index.html
-
-ENTRYPOINT ["apache2ctl"]
-
-CMD ["-DFOREGROUND"]
