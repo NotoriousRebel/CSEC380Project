@@ -9,7 +9,7 @@ before_install:
   - docker-compose -f apache_web_server/docker-compose.yml up --build -d
   - pip install -r requirements.txt
 script:
-  - pytest tests/
+  - pytest tests/helloworld.py
   - flake8 . --count --show-source --statistics
 after_script:
   - docker-compose down
