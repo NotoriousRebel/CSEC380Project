@@ -3,9 +3,13 @@ language: python
 python:
 - '3.6'
 - '3.7'
-- '3.8-dev'
+services:
+    - docker
 before_install:
+  - docker-compose -f apache_web_server/docker-compose.yml up --build -d
   - pip install -r requirements.txt
 script:
-- pytest helloworld.py
-- flake8 . --count --show-source --statistics
+  - pytest tests/
+  - flake8 . --count --show-source --statistics
+after_script:
+  - docker-compose down
