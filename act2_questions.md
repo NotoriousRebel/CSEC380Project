@@ -1,16 +1,5 @@
 # Activity2 Questions
 
-**What testing framework did you choose and why?**<br/>
-For our project we chose pytest as our testing framework. There are numerous reasons as to why 
-we choose pytest: easy to use, extensive documentation, and easy to integrate into our Travis builds. 
-Furthermore, down the road when we need more complicated tests for different acts of our project, we 
-can just have one file with multiple classes. The flexibility and convenience features that pytest has 
-incorporated makes writing tests easy and worthwhile Moreover, the output of pytest is extremely easy 
-to understand and will show exactly what went wrong, decreasing overall debugging and increasing productivity. 
-With pytest it’s simply a pip install; furthermore, it’s easy to get started with. Overall, we chose pytest 
-due to the enormous benefits, ease of use, extensive documentation, easy to understand output, and easy to 
-integrate into our Travis builds.
-
 **What Web Application security mechanisms are involved in your topology? What security mechanisms would ideally be involved?**<br/>
 At the current moment our security mechanisms include:<br/>
 <br/>
@@ -36,3 +25,15 @@ needs of our topology.
 from clients, then send them those requests to and receive responses from the web server. This ensures that no 
 client ever communicates directly with our web server. Furthermore, this means that our web application doesn’t 
 need to reveal the IP of our origin server. This makes it harder for attackers to perform a DDoS attack.
+
+
+**What testing framework did you choose and why?**<br/>
+For our project we chose pytest as our testing framework. There are numerous reasons as to why 
+we choose pytest: easy to use, extensive documentation, and easy to integrate into our Travis builds. 
+Furthermore, down the road when we need more complicated tests for different acts of our project, we 
+can just have one file with multiple classes. The flexibility and convenience features that pytest has 
+incorporated makes writing tests easy and worthwhile Moreover, the output of pytest is extremely easy 
+to understand and will show exactly what went wrong, decreasing overall debugging and increasing productivity. 
+With pytest it’s simply a pip install; furthermore, it’s easy to get started with. Overall, we chose pytest 
+due to the enormous benefits, ease of use, extensive documentation, easy to understand output, and easy to 
+integrate into our Travis builds.
