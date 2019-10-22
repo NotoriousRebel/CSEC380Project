@@ -6,4 +6,3 @@ services:
     build: ./web
     ports:
        - "80:80"
-
