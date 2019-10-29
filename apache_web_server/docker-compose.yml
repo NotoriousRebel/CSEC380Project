@@ -2,8 +2,7 @@ version: '3'
 
 services: 
   memetube: 
-    build: 
-    - path: "."
+    build: .
     - network: host
     ports:
     - "80:80"
