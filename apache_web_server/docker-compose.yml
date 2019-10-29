@@ -1,8 +1,7 @@
 version: '3'
 
 services: 
-  web: 
-    image: apache 
-    build: ./web
+  memetube: 
+    build: .
     ports:
-       - "80:80"
+    - "82:80"

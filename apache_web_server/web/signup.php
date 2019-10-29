@@ -10,8 +10,8 @@
 	define('DB_HOST', 'localhost', FALSE);
 	define('DB_USER','user', FALSE);
 	define('DB_PASSWORD','password', FALSE);
-	define('DB_NAME', 'UserInfo', FALSE);
-	define('DB_TABLE_NAME', 'UserName', FALSE);
+	define('DB_NAME', 'Users', FALSE);
+	define('DB_TABLE_NAME', 'Credentials', FALSE);
 
 	// POST params
 	$username = $_POST['user'];
