@@ -4,5 +4,4 @@ services:
   memetube: 
     build: .
     ports:
-    - "80:80"
-    network_mode: "host"
+    - "82:80"
