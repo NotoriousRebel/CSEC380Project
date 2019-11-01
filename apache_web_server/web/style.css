@@ -1,0 +1,37 @@
+/*CSS File For Sign-In webpage*/
+#body-color{
+	background-color:green;
+}
+#Sign-In{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	border:3px solid black;
+	padding:9px 35px; 
+	background:white;
+	width:400px;
+	border-radius:20px;
+	box-shadow: 7px 7px 6px;
+}
+#Sign-Up{
+	float: right;
+	border:3px solid black;
+	padding:9px 35px; 
+	background:white;
+	width:400px;
+	border-radius:20px;
+	box-shadow: 7px 7px 6px;
+}
+#button{
+	border-radius:10px;
+	width:100px;
+	height:40px;
+	background:green;
+	font-weight:bold;
+	font-size:20px
+}
+.meme{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
