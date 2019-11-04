@@ -1,7 +1,6 @@
 import pytest
 import requests
 
-
 def test_helloworld():
     # Basic pytest for act1 to determine if travis is working
     resp = requests.get('http://localhost')
