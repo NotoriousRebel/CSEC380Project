@@ -6,9 +6,9 @@ python:
 services:
     - docker
 before_install:
+  - pip install -r requirements.txt
   - cd apache_web_server
   - docker-compose up --build -d
-  - pip install -r requirements.txt
 script:
   - pytest tests/
   - flake8 . --count --show-source --statistics
