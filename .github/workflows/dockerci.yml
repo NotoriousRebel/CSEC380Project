@@ -8,4 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
-        run: docker-compose -f apache_web_server/docker-compose.yml up --build -d --tag csec380project:$(date + %s)
+        run: docker-compose -f apache_web_server/docker-compose.yml up --build -d
+
