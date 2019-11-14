@@ -4,4 +4,5 @@ services:
   memetube: 
     build: .
     ports:
-    - "82:80"
+    - "80:80"
+    - "443:443"
