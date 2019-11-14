@@ -1,6 +1,7 @@
 -- Create Users database
 
 CREATE DATABASE IF NOT EXISTS Users;
+
 USE Users;
 
 CREATE TABLE Credentials(
