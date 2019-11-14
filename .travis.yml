@@ -11,5 +11,3 @@ before_install:
 script:
   - pytest tests/
   - flake8 . --count --show-source --statistics
-after_script:
-  - docker-compose down
