@@ -32,21 +32,29 @@
 	$result = mysqli_query($db,$query);
 	// get the number of rows returned
 	$num = mysqli_num_rows($result);
-	
-	while ($row = $result->fetch_assoc()){
-		echo $row['Password'];
-		if (password_verify($password, $row['Password'])){
-			echo "Welcome to MemeTube $_POST[user]!";
-			break;
+	if ($num > 0){
+		while ($row = $result->fetch_assoc()){
+			if (password_verify($password, $row['Password'])){
+				echo "Welcome to MemeTube $_POST[user]!";
+				break;
+			}
+			else{
+				echo "Credentials not found\n";
+				echo "Redirecting";
+				//sleep(2);
+				// redirect back to the login page with a status code 420
+				//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
+				exit();
+			}
 		}
-		else{
-			echo "Credentials not found\n";
-			echo "Redirecting";
-			//sleep(2);
-			// redirect back to the login page with a status code 420
-			//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
-			exit();
-		}
+	}
+	else{
+		echo "Credentials not found\n";
+		echo "Redirecting";
+		//sleep(2);
+		// redirect back to the login page with a status code 420
+		//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
+		exit();
 	}
 
 	mysqli_close($db);
