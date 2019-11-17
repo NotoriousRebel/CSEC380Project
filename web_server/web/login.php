@@ -16,7 +16,7 @@
 	// POST params
 	$username = $_POST['user'];
 	$password = $_POST['pass'];
-
+	
 
 	$db=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	// Check connection
@@ -27,22 +27,27 @@
 	  }
 
 	// The query to look for the users creds
-	$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "' AND Password = '" . $password . "'";
+	$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "'";
 	// result is an object
 	$result = mysqli_query($db,$query);
 	// get the number of rows returned
 	$num = mysqli_num_rows($result);
+	
+	while ($row = $result->fetch_assoc()){
+		echo $row['Password'];
+		if (password_verify($password, $row['Password'])){
+			echo "Welcome to MemeTube $_POST[user]!";
+			break;
+		}
+		else{
+			echo "Credentials not found\n";
+			echo "Redirecting";
+			//sleep(2);
+			// redirect back to the login page with a status code 420
+			//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
+			exit();
+		}
+	}
 
-	// Check to see if the user pass combo is in the db
-	if ($num > 0){
-		echo "Welcome to MemeTube $_POST[user]!";
-	}
-	else{
-		echo "Credentials not found\n";
-		echo "Redirecting";
-		//sleep(2);
-		// redirect back to the login page with a status code 420
-		//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
-	}
 	mysqli_close($db);
 ?> 

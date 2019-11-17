@@ -28,6 +28,8 @@
 	if ($username == "" || $password == "" || $password_2 == "") {
 		exit("Make sure no fields are blank");
 	}
+	// Passes checks so hash password
+	$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 	$db=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	// Check connection
@@ -47,7 +49,7 @@
 	}
 
 	// The query to look for the users creds
-	$add_user = "INSERT INTO " . DB_TABLE_NAME . " VALUES (NULL, '" . $username . "', '" . $password . "')";
+	$add_user = "INSERT INTO " . DB_TABLE_NAME . " VALUES (NULL, '" . $username . "', '" . $hashed_password . "')";
 	// result is an object
 	if (mysqli_query($db, $add_user)) {
 	    echo "New record created successfully";
