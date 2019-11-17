@@ -1,4 +1,4 @@
 *.idea
 *.pyc
 .pytest_cache
-./tests/.cache
+.cache
