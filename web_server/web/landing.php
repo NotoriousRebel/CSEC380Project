@@ -1,6 +1,5 @@
 <?php
 	include('session.php');
-	include('common.php')
 ?>
 
 <html>
@@ -22,11 +21,6 @@
            		<button type = "submit" name="upload-submit">UPLOAD</button>
             </form>
 
-            //DISPLAY FEED
-            //CREATE UPLOAD BUTTON
-            //DELETE BUTTON
-            //USER WHO UPLOADED
-
             <?php
             	$sql = "SELECT * FROM Videos;";
 				$results = mysqli_query($conn, $sql);
@@ -34,13 +28,16 @@
 
 				if ($resultcheck > 0){
 					while($row = mysqli_fetch_assoc($results)) {
-						$sql = "SELECT UserName FROM Credentials WHERE ID LIKE " . $row['UserID'] . ";";
+						$sql = "SELECT UserName FROM " . DB_TABLE_NAME . " WHERE ID = " . $row['UserID'] . "';";
 						$result = mysqli_query($conn, $sql);
-						$row2 = mysqli_fetch_assoc($result)
+						$row2 = mysqli_fetch_assoc($result);
 
-						$ib = '<video width="320" height="240" controls><source src="uploads/'. $row['VideoName'] . '" type="video/mp4"></video><p>Posted by ' . $row2['UserName'] . '</p>';
+						$location = "uploads/".$row['VideoName'];
 
-						echo $ib;
+						echo "<div>";
+						echo "<video src='".$location."' controls width='320px' height='200px' >";
+						echo "<p>Posted by " . $row2['UserName'] . "</p>";
+						echo "</div>";
             		}
 				}
             ?>
@@ -49,7 +46,7 @@
 			<div class="column3"></div>		
 		</div>
 		<form action="logout.php" method="POST">
-			<button id="button" type="submit" name="logout-submit"> Log-Out></button>
+			<button id="button" type="submit" name="logout-submit"> Log-Out</button>
 		</form>
 	</body>
 </html>

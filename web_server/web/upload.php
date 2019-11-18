@@ -1,15 +1,14 @@
 <?php
-	include("common.php");
 	include("session.php")
 
 	if (isset($_POST['upload-submit'])) {
 		$file = $_FILES['file'];
 
-		$fileName = $_FILES['name'];
-		$fileTmpName = $_FILES['tmp_name'];
-		$fileType = $_FILES['type'];
-		$fileSize = $_FILES['size'];
-		$fileError = $_FILES['error'];
+		$fileName = $_FILES['file']['name'];
+		$fileTmpName = $_FILES['file']['tmp_name'];
+		$fileType = $_FILES['file']['type'];
+		$fileSize = $_FILES['file']['size'];
+		$fileError = $_FILES['file']['error'];
 
 		$fileExt = explode('.', $fileName);
 		$fileRealExt = strtolower(end($fileExt));
@@ -20,17 +19,20 @@
 			if($fileError === 0){
 				if ($fileSize < 1000000000 ){
 					$fileNameNew = uniqid('', true).".".$fileRealExt;
-					$fileDestination = 'uploads/'.$fileNameNew;
-					move_uploaded_file($fileTmpName, $fileDestination);
+					$fileDestination = "uploads/".$fileNameNew;
+					if(move_uploaded_file($fileTmpName, $fileDestination)){
+						$query_username = "SELECT ID FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $loggedin_session . "';";
+						$result = mysqli_query($conn, $query_username);
+						$row = mysqli_fetch_assoc($result);
 
-					//session.php username
-					$sql = "SELECT ID FROM Credentials WHERE UserName LIKE " . $loggedin_session . ";";
-					$result = mysqli_query($conn, $sql);
-					$row = mysqli_fetch_assoc($result)
-
-					$sql = "INSERT INTO Videos (UserID, VideoName) VALUES (" . $row['ID'] . ", " . $fileNameNew . ");";
-
-					header("Location: landing.php");
+						$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "');";
+					
+						mysqli_query($conn, $add_video);
+						echo "Upload Successful";
+						header("Location: landing.php");
+					} else{
+						echo "Error moving file";
+					}
 				} else {
 					echo "Your file is too big!"
 				}
@@ -40,6 +42,5 @@
 		} else {
 			echo "You cannot upload files of this type!";
 		}
-
 	}
 ?>

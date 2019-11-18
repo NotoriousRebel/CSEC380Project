@@ -42,8 +42,9 @@
 		// result is an object
 		if (mysqli_query($conn, $add_user)) {
 	    		echo "New record created successfully";
-			header("location: index.html'); 
+			header("location: index.html"); 
 		} else {
 	    		echo "Error: " . $add_user . "<br>" . mysqli_error($db);
 		}
+	}
 ?> 
