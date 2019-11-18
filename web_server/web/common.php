@@ -4,6 +4,7 @@
    define('DB_PASSWORD', "");
    define('DB_DATABASE', "Users");
    define('DB_TABLE_NAME', "Credentials");
+   define('DB_TABLE_NAME2', "Videos");
 
    $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
    if (mysqli_connect_errno())

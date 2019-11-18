@@ -1,5 +1,5 @@
 <?php
-	include("session.php")
+	include("session.php");
 
 	if (isset($_POST['upload-submit'])) {
 		$file = $_FILES['file'];
@@ -27,14 +27,16 @@
 
 						$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "');";
 					
-						mysqli_query($conn, $add_video);
-						echo "Upload Successful";
-						header("Location: landing.php");
+						if(mysqli_query($conn, $add_video)){
+							header("Location: landing.php");
+						} else{
+							echo "Error inserting file";
+						}
 					} else{
 						echo "Error moving file";
 					}
 				} else {
-					echo "Your file is too big!"
+					echo "Your file is too big!";
 				}
 			} else{
 				echo "There was an error uploading your file!";
