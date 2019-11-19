@@ -16,9 +16,14 @@
 
 			<div class="column2" style="text-align:center">
        
-            <form action="upload.php" method="POST" enctype="multipart/form-data">
+			<form action="upload.php" method="POST" enctype="multipart/form-data">
            		<input type="file" name="file" />
            		<button type = "submit" name="upload-submit">UPLOAD</button>
+            </form>
+
+            <form action="upload.php" method="POST">
+            	Video URL:<input type="url" name="videolink" placeholder="Paste video URL here">
+            	<input type="submit" name="upload-submitlink" value="Send data">
             </form>
 
             <?php
