@@ -26,6 +26,8 @@
 			exit("Make sure no fields are blank");
 		}
 
+		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
 		$query_username = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "'";
 		$response = mysqli_query($conn, $query_username);
 		$num = mysqli_num_rows($response);
@@ -38,13 +40,13 @@
 		}
 
 		// Add user into DB
-		$add_user = "INSERT INTO " . DB_TABLE_NAME . " VALUES (NULL, '" . $username . "', '" . $password . "')";
+		$add_user = "INSERT INTO " . DB_TABLE_NAME . " VALUES (NULL, '" . $username . "', '" . $hashed_password . "')";
 		// result is an object
 		if (mysqli_query($conn, $add_user)) {
-	    		echo "New record created successfully";
+	    	echo "New record created successfully";
 			header("location: index.html"); 
 		} else {
-	    		echo "Error: " . $add_user . "<br>" . mysqli_error($db);
+	    	echo "Error: " . $add_user . "<br>" . mysqli_error($db);
 		}
 	}
 ?> 

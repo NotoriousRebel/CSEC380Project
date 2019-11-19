@@ -15,7 +15,7 @@
 		$password = $_POST['pass'];
 
 		// The query to look for the users creds
-		$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "' AND Password = '" . $password . "'";
+		$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "'";
 		// result is an object
 		$result = mysqli_query($conn,$query);
 		// get the number of rows returned
@@ -23,8 +23,14 @@
 
 		// Check to see if the user pass combo is in the db
 		if ($num > 0){
-			$_SESSION['loggedin_user'] = $username;
-			header("location: landing.php");
+			while ($row = $result->fetch_assoc()){
+				if (password_verify($password, $row['Password'])){
+					$_SESSION['loggedin_user'] = $username;
+					header("location: landing.php");
+				} else {
+					header("location: index.html?error=credentialsIncorrect");
+				}
+			}
 		}
 		else{
 			header("location: index.html?error=credentialsIncorrect");
