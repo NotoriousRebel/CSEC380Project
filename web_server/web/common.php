@@ -1,7 +1,7 @@
 <?php
    define('DB_SERVER', "localhost");
-   define('DB_USERNAME', "root");
-   define('DB_PASSWORD', "");
+   define('DB_USERNAME', "admin");
+   define('DB_PASSWORD', "pass");
    define('DB_DATABASE', "Users");
    define('DB_TABLE_NAME', "Credentials");
    define('DB_TABLE_NAME2', "Videos");
