@@ -39,7 +39,7 @@ video {
 }
 
 .column1 {
-	background-image: url("pictures/left.png");
+	background-image: url("images/left.png");
 	background-size: 100%;
 	width: 33%;
 	height: 100%;
@@ -56,7 +56,7 @@ video {
 }
 
 .column3 {
-	background-image: url("pictures/right.png");
+	background-image: url("images/right.png");
 	background-size: 100%;
 	width: 33%;
 	height: 100%;

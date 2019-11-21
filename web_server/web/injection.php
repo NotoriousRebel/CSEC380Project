@@ -15,7 +15,7 @@
             catch(Exception $e){
                 die("An error has occurred when running command here is error: $e");
             }
-            echo '<img src="img/science.gif" alt="science!" style="display: block; margin: 0 auto;" >';
+            echo '<img src="images/science.gif" alt="science!" style="display: block; margin: 0 auto;" >';
             echo '<br>';
             echo "$output";
         }
