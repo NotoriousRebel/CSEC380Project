@@ -1,4 +1,4 @@
- <?php
+<?php
 	/*
 	Date: 10/10/2019
 	Description: This is an intentionally vulnerable script to handle basic authentication
@@ -6,43 +6,35 @@
 	Blind SQL Injection: "a' OR 1=1 -- "
 	*/
 
-	// Constant variables
-	define('DB_HOST', 'localhost', FALSE);
-	define('DB_USER','admin', FALSE);
-	define('DB_PASSWORD','pass', FALSE);
-	define('DB_NAME', 'Users', FALSE);
-	define('DB_TABLE_NAME', 'Credentials', FALSE);
+	include("common.php");
+	session_start();
 
-	// POST params
-	$username = $_POST['user'];
-	$password = $_POST['pass'];
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+		// POST params
+		$username = $_POST['user'];
+		$password = $_POST['pass'];
 
+		// The query to look for the users creds
+		$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "'";
+		// result is an object
+		$result = mysqli_query($conn,$query);
+		// get the number of rows returned
+		$num = mysqli_num_rows($result);
 
-	$db=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	// Check connection
-	if (mysqli_connect_errno())
-	  {
-	  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	  exit();
-	  }
-
-	// The query to look for the users creds
-	$query = "SELECT * FROM " . DB_TABLE_NAME . " WHERE UserName = '" . $username . "' AND Password = '" . $password . "'";
-	// result is an object
-	$result = mysqli_query($db,$query);
-	// get the number of rows returned
-	$num = mysqli_num_rows($result);
-
-	// Check to see if the user pass combo is in the db
-	if ($num > 0){
-		echo "Welcome to MemeTube $_POST[user]!";
+		// Check to see if the user pass combo is in the db
+		if ($num > 0){
+			while ($row = $result->fetch_assoc()){
+				if (password_verify($password, $row['Password'])){
+					$_SESSION['loggedin_user'] = $username;
+					header("location: landing.php");
+				} else {
+					header("location: index.html?error=credentialsIncorrect");
+				}
+			}
+		}
+		else{
+			header("location: index.html?error=credentialsIncorrect");
+			exit();
+		}
 	}
-	else{
-		echo "Credentials not found\n";
-		echo "Redirecting";
-		//sleep(2);
-		// redirect back to the login page with a status code 420
-		//header('Location: ' . $_SERVER['HTTP_REFERER'], 420);
-	}
-	mysqli_close($db);
 ?> 
