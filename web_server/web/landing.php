@@ -10,7 +10,7 @@
     </head>
 
 	<body>
-		<h1 align="center"> Welcome to Memetube, <?php echo $loggedin_session; ?></h1>
+		<h1 style="text-align:center"> Welcome to Memetube, <?php echo $loggedin_session; ?></h1>
 		<div class = "box">
 			<div class="column1"></div>
 
