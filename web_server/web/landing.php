@@ -53,12 +53,11 @@
             		}
 				}
             ?>
-
+            <form action="logout.php" method="POST">
+				<button id="button" type="submit" name="logout-submit"> Log-Out</button>
+			</form>
 			</div>
 			<div class="column3"></div>		
 		</div>
-		<form action="logout.php" method="POST">
-			<button id="button" type="submit" name="logout-submit"> Log-Out</button>
-		</form>
 	</body>
 </html>
