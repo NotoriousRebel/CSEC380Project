@@ -10,7 +10,7 @@
     </head>
 
 	<body>
-		<h1 style="text-align:center"> Welcome to Memetube, <?php echo $loggedin_session; ?></h1>
+		<h1 style="text-align:center"> Welcome to Memetube, <?php echo htmlspecialchars($loggedin_session); ?></h1>
 		<div class = "box">
 			<div class="column1"></div>
 
@@ -41,7 +41,9 @@
 
 						echo "<div>";
 						echo "<video src='".$location."' controls width='320px' height='200px' ></video>";
-						echo "<p>Posted by " . $row2['UserName'] . "</p>";
+						$usernamestr = "Posted by " . $row2['UserName'];
+						echo htmlspecialchars($usernamestr);
+
 						if ($row2['UserName'] == $loggedin_session){
 							echo "<form action='delete.php' method='POST'>";
 							echo "<input type=hidden name=vidID value='".$row['VideoID']."'/>";
@@ -53,12 +55,11 @@
             		}
 				}
             ?>
-
+            <form action="logout.php" method="POST">
+				<button id="button" type="submit" name="logout-submit"> Log-Out</button>
+			</form>
 			</div>
 			<div class="column3"></div>		
 		</div>
-		<form action="logout.php" method="POST">
-			<button id="button" type="submit" name="logout-submit"> Log-Out</button>
-		</form>
 	</body>
 </html>
