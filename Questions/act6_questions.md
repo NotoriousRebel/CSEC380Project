@@ -1,4 +1,4 @@
-# Activity7 Questions
+# Activity6 Questions
 
 **• How would you fix your code so that this issue is no longer present?**<br/>
 
