@@ -7,8 +7,9 @@ try:
 except Exception as e:
     print(f'An exception has occurred while disabling warnings: {e}')
 
+
 def test_ssrf():
-    #set user
+    # set user
     session = requests.session()
     user = "bob"
     password = "Pass"
@@ -20,7 +21,7 @@ def test_ssrf():
         'submit': 'Register'
     }
     session.post(signup_url, data=dataSetA, verify=False)
-    #login
+    # login
     user = "bob"
     password = "Pass"
     dataSetB = {
@@ -29,8 +30,8 @@ def test_ssrf():
         'submit': 'Log-In'
     }
     login_url = 'https://127.0.0.1/login.php'
-    session.post(login_url, data=dataSetB, verify=False)  
-    #the actual tests
+    session.post(login_url, data=dataSetB, verify=False)
+    # the actual tests
     dataSet1 = {
         'upload-submitlink': "Send data",
         'videolink': "http://evnet.student.rit.edu:80/test.mp4"
@@ -55,12 +56,11 @@ def test_ssrf():
     }
     url4 = "https://127.0.0.1/upload.php"
     r4 = session.post(url4, data=dataSet4, verify=False)
-    #verify tests
+    # verify tests
     assert "Welcome to Memetube" in r1.text
     assert "Error moving file" in r2.text
     assert "Error moving file" in r3.text
     assert "Error moving file" in r4.text
     
-
 if __name__ == '__main__':
     pytest.main()
