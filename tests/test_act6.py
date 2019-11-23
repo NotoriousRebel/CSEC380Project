@@ -61,6 +61,6 @@ def test_ssrf():
     assert "Error moving file" in r2.text
     assert "Error moving file" in r3.text
     assert "Error moving file" in r4.text
-    
+
 if __name__ == '__main__':
     pytest.main()
