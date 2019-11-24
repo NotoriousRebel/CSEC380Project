@@ -46,6 +46,7 @@ def test_login():
     assert "Welcome to Memetube, Colonel_Sanders" in resp.text
     # we are in the memetrix
 
+
 def test_wrong_username():
     user = "thisuserdoesntexist"
     password = "lol"
@@ -60,6 +61,7 @@ def test_wrong_username():
     assert "error=credentialsIncorrect" in resp.url
     assert 200 == resp.status_code
 
+
 def test_wrong_password():
     user = "admin"
     password = "wrongpw"
@@ -73,6 +75,7 @@ def test_wrong_password():
     # login with created user
     assert "error=credentialsIncorrect" in resp.url
     assert 200 == resp.status_code
+
 
 if __name__ == '__main__':
     pytest.main()
