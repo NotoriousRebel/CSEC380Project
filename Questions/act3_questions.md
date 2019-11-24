@@ -9,6 +9,6 @@ Since the passwords are hashed and salted it would take an adversary more time t
 ## How do you prevent password brute force?
 We implemented a 1-second delay in the login.php script to reduce the feasability of a brute force attack.
 ## How do you prevent username enumeration?
-When a user enters credentials into our site and we determine them to be incorrect we do not tell the user if the username was correct or not. Instead, we return a generic "credentialsIncorrect" error.
+When a user enters credentials into our site and we determine them to be incorrect we do not tell the user if the username was correct or not. Instead, we return a generic "credentialsIncorrect" error as a URL parameter.
 ## What happens if your sessionID is predictable, how do you prevent that?
 If your sessionID is predictable this potentially allows attackers to forge their own sessionID's and gain access to other users accounts. The way to prevent this is to make sure that you are generating a cryptographically random sessionID for each user with the most entropy as possible. Also a good way to test this is to open up Burp Sequencer and run it against your site.
