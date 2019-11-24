@@ -1,7 +1,7 @@
 ## Provide a link to the test cases you generated for this activity.
 The pytest file can be found at tests/test_act3.py or you can look at travis's results [here!](https://travis-ci.com/NotoriousRebel/CSEC380Project)
 ## How do you ensure that users that navigate to the protected pages cannot bypass authentication requirements?
-The security measures we took include hashing user passwords using the Bcrypt algorithm before storing them in the database, these passwords are also salted for increased protection. Lastly, to prevent unwanted people from sniffing traffic and potentially seeing our users passwords we implemented TLS to encrypt the network traffic.
+The security measures we took include hashing user passwords using the Bcrypt algorithm before storing them in the database, these passwords are also salted for increased protection. To prevent scrapers and other peoplethat are not authenicated from seeing our valuable videos wee implemented PHP sessions for logged in users and only allow users with an active session to view the content. Lastly, to prevent unwanted people from sniffing traffic and potentially seeing our users passwords we implemented TLS to encrypt the network traffic.
 ## How do you protect against session fixation?
 We coded the application to assign a different session cookie immediately after a user authenticates to the application. We also send these values over POST instead of GET parameters. 
 ## How do you ensure that if your database gets stolen passwords aren’t exposed?
