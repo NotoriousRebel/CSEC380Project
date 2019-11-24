@@ -3,7 +3,6 @@
 	Date: 10/10/2019
 	Description: This is an intentionally vulnerable script to handle basic authentication
 		     of a user on MemeTube. 
-	Blind SQL Injection: "a' OR 1=1 -- "
 	*/
 
 	include("common.php");

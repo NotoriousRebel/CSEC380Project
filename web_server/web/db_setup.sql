@@ -23,3 +23,5 @@ CREATE TABLE Videos(
                         PRIMARY KEY (VideoID),
                         CONSTRAINT FK_UserVideo FOREIGN KEY (UserID) REFERENCES Credentials(ID)
 );
+
+INSERT INTO Credentials Values(NULL, "admin", "admin");

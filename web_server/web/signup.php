@@ -34,6 +34,9 @@
 
 		// Check if username is already in the database
 		if ($num > 0){
+			while ($row = $resonse->fetch_assoc()) {
+				echo $row['UserName'];
+			}
 			exit("Username is already in the database");
 			// redirect back to the login page with a status code 422
 			//header('Location: ' . $_SERVER['HTTP_REFERER'], 422);
