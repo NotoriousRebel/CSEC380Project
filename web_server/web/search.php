@@ -1,9 +1,7 @@
 <?php
 include('common.php');
 $search_q = $_POST['search'];
-echo $search_q;
 $query = mysqli_query($conn, "SELECT * FROM " . DB_TABLE_NAME2 . " WHERE OrigName = '" . $search_q . "'");
-
 $resultcheck = mysqli_num_rows($query);
 
 if ($resultcheck > 0){
