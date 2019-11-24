@@ -15,6 +15,11 @@
 			<div class="column1"></div>
 
 			<div class="column2" style="text-align:center">
+
+			<form action="search.php" method="POST">
+				<input type="search" name="search">
+				<button type="submit" name="submit">Search</button>
+			</form>
        
 			<form action="upload.php" method="POST" enctype="multipart/form-data">
            		<input type="file" name="file" />

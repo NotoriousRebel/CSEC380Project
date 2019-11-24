@@ -19,6 +19,7 @@ CREATE TABLE Videos(
                         VideoID int(9) NOT NULL auto_increment,
                         UserID int(9) NOT NULL,
                         VideoName VARCHAR(150) NOT NULL,
+                        OrigName VARCHAR(150) NOT NULL,
                         PRIMARY KEY (VideoID),
                         CONSTRAINT FK_UserVideo FOREIGN KEY (UserID) REFERENCES Credentials(ID)
 );
