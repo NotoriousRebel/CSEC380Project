@@ -6,6 +6,7 @@
 	*/
 
 	include("common.php");
+	sleep(1);
 	session_start();
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
