@@ -2,7 +2,7 @@
 	include("session.php");
 
 	if (isset($_POST['upload-submit']) || isset($_POST['upload-submitlink'])) {
-
+		$fileName = "";
 		if(isset($_POST['upload-submitlink'])) {
 
 			if(empty($_POST['videolink'])){
@@ -39,7 +39,7 @@
 							$result = mysqli_query($conn, $query_username);
 							$row = mysqli_fetch_assoc($result);
 
-							$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "');";
+							$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "', '" . $fileName . "');";
 						
 							if(mysqli_query($conn, $add_video)){
 								header("Location: landing.php");
@@ -55,7 +55,7 @@
 							$result = mysqli_query($conn, $query_username);
 							$row = mysqli_fetch_assoc($result);
 
-							$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "');";
+							$add_video = "INSERT INTO " . DB_TABLE_NAME2 . " VALUES(NULL, '" . $row['ID'] . "', '" . $fileNameNew . "', '" . $fileName . "');";
 						
 							if(mysqli_query($conn, $add_video)){
 								header("Location: landing.php");
