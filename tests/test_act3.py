@@ -10,7 +10,7 @@ except Exception as e:
 
 def test_helloworld():
     # Basic pytest for act1 to determine if travis is working
-    resp = requests.get('https://127.0.0.1', verify=False)
+    resp = requests.get('https://127.0.0.1/', verify=False)
     assert 'SIGN-IN HERE' in resp.text
     assert 200 == resp.status_code
 
@@ -45,6 +45,36 @@ def test_login():
     assert 200 == resp.status_code
     assert "Welcome to Memetube, Colonel_Sanders" in resp.text
     # we are in the memetrix
+
+
+def test_wrong_username():
+    user = "thisuserdoesntexist"
+    password = "lol"
+    data = {
+        'user': user,
+        'pass': password,
+        'submit': 'Log-In'
+    }
+    login_url = 'https://127.0.0.1/login.php'
+    resp = requests.post(login_url, data=data, verify=False)
+    # login with created user
+    assert "error=credentialsIncorrect" in resp.url
+    assert 200 == resp.status_code
+
+
+def test_wrong_password():
+    user = "admin"
+    password = "wrongpw"
+    data = {
+        'user': user,
+        'pass': password,
+        'submit': 'Log-In'
+    }
+    login_url = 'https://127.0.0.1/login.php'
+    resp = requests.post(login_url, data=data, verify=False)
+    # login with created user
+    assert "error=credentialsIncorrect" in resp.url
+    assert 200 == resp.status_code
 
 
 if __name__ == '__main__':
