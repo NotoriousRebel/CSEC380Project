@@ -15,7 +15,7 @@ def test_helloworld():
     assert 200 == resp.status_code
 
 
-def test_login():
+def test_login_sqli():
     user = "a' or 1=1 -- "
     password = ""
     data = {
@@ -29,6 +29,19 @@ def test_login():
     print('test_login: ', resp.text)
     assert 200 == resp.status_code
     assert "Welcome to Memetube" in resp.text
+    # we are in the memetrix
+
+
+def test_search_sqli():
+    sqli = "a' or 1=1 -- "
+    data = {
+        'search': sqli,
+        'submit': 'Search'
+    }
+    login_url = 'https://127.0.0.1/search.php'
+    resp = requests.post(login_url, data=data, verify=False)
+
+    assert 200 == resp.status_code
     # we are in the memetrix
 
 
